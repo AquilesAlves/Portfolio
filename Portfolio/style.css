@@ -1,0 +1,357 @@
+* {                                         /*  mexe em todo o html */
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+body{                                       /*  mexe em todo o body */
+    background-color: #081b29;
+    color: white;
+    /*  background: url(imagens/empty-dark-concrete-wall-room-studio-background-floor-perspective-with-blue-soft-light-displays_1258-108919.jpg) no-repeat;
+    background-size: cover;
+    */
+
+}
+
+#imagem{                                      /*  minha imagem    */
+    align-items: flex-end;
+    justify-content: left;
+
+
+    
+
+}
+
+#cabecalho{                                 /*  mexe no footer  */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px 10%;
+    background: transparent;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 100;
+
+
+}
+
+
+
+#logo {                                     /*  mexe no nome Aquiles    */
+    position: relative;
+    font-size: 25px;
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+
+}
+
+
+#logo::before{
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    /*
+    background: #081b29;        erro testar            
+    animation: showRight 1s ease forwards;
+    animation-delay: 0.4s;
+    */
+    
+}
+
+#barra a{                                   /*  mexe na barra de navegação superior */
+    font-size: 18px;
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    margin-left: 35px;
+    transition: 0.3s;
+
+}
+
+#barra a:hover, #barra a#ativo {            /*  mexe na mudança de cor da barra */
+    color: #00abf0;
+}
+
+#principal{                                 /*  mexe em toda a section  */
+    height: 100vh;
+    background: url('') no-repeat;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    padding: 0 10%;
+    
+    
+
+}
+
+#conteudo-principal{                        /* mexe na div dos textos   */
+    max-width: 600px;
+
+}
+
+#conteudo-principal h1{                     /*  mexe no h1  */
+    position: relative;
+    font-size: 56px;
+    font-weight: 700;
+    line-height: 1.2;
+
+}
+
+/*
+#conteudo-principal h1::before{
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    background: #081b29;
+    animation:  showRight 1s ease forwards;
+    animation-delay: 1s;
+    
+}
+*/
+
+#conteudo-principal h3{                     /*  mexe no h3   */
+    font-size: 32px;
+    font-weight: 700;
+    color: #00abf0;
+}
+
+#conteudo-principal p{                      /*  mexe no paragrafo    */
+    font-size: 16px;
+    margin: 20px;
+    
+}
+
+#conteudo-principal #botoes{                /*  mexe nos botoes     */
+    display: flex;
+    justify-content: space-between;
+    width: 345px;
+    height: 50px;
+
+}
+
+#botoes a{                                  /*  mexe nas tags 'a' dos botoes    */
+    position: relative;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 150px;
+    height: 100%;
+    background: #00abf0;
+    border: 2px solid #00abf0;
+    border-radius: 8px;
+    font-size: 19px;
+    color: #081b29;
+    text-decoration: none;
+    font-weight: 600;
+    letter-spacing: 1px;
+    z-index: 1;
+    overflow: hidden;
+    transition: 0.5s;
+
+}
+
+#botoes a:hover{                            /*  mexe na mudança de cor dos botoes   */
+    color: #00abf0;
+}
+
+#botoes a:nth-child(2){                     /*  mexe no segundo botao   */
+    background: transparent;
+    color: #00abf0;
+    text-align: center;
+
+}
+
+#botoes a:nth-child(2):hover{               /*  mudança de cor do segundo botao */
+    color: #081b29;
+}
+
+#botoes a:nth-child(2)::before{             /*  cor q o botao fica qnd coloca o mouse    */
+    background: #00abf0;
+}
+
+#botoes a::before{                          /*  como fica os botoes dps     */
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 100%;
+    background: #081b29;
+    z-index: -1;
+    transition: 0.5s;
+
+
+}
+
+#botoes a:hover::before{
+    width: 100%;
+}
+
+#redes{
+    position: absolute;
+    bottom: 40px;
+    width: 170px;
+    display: flex;
+    justify-content: space-between;
+
+}
+
+#redes a{
+    position: relative;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    background: transparent;
+    border:  2px solid #00abf0;
+    border-radius: 50%;
+    font-size: 20px;
+    color: #00abf0;
+    text-decoration: none;
+    z-index: 1;
+    overflow: hidden;
+    transition: 0.5s;
+
+}
+
+#redes a:hover{
+    color: #081b29;
+}
+
+#redes a::before{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 100%;
+    background: #00abf0;
+    z-index: -1;
+    transition: 0.5s;
+
+
+}
+
+#redes a:hover::before{
+    width: 100%;
+
+}
+
+#home-imgHover{
+    position: absolute;
+    top: 0;
+    right: 30px;
+    width: 350px;
+    height: 100%;
+    background: transparent;
+
+    transition: 3s;
+
+}
+
+#home-imgHover:hover {
+    background: #18374d;
+    opacity: 0.8;
+
+}
+
+/*  KEYFRAMES ANIMATION 
+
+@keyframes showright {
+    100%{
+        width: 0;
+    }
+}
+
+*/
+
+.projetos-h1{
+    margin-top: 50px;
+    margin-left: 100px;
+}
+
+#projetos {
+    padding: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: 150px;
+
+
+}
+
+.projeto {
+    background-color: #18374d;
+    margin: 10px;
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 300px;
+
+}
+
+.mario {
+    border-radius: 5px;
+    width: 233px;
+    margin-left: 15px;
+    margin-bottom: 30px;
+
+}
+
+.loginpage{
+    border-radius: 5px;
+    width: 250px;
+    margin-left: 5px;
+    margin-bottom: 30px;
+
+}
+
+.calculadora{
+    border-radius: 5px;
+    width: 240px;
+    margin-left: 9px;
+    margin-bottom: 28px;
+
+}
+
+.projeto h2{
+    margin-top: 10px;
+    
+
+}
+
+.projeto p{
+    margin-top: 10px;
+    font-size: 16px;
+    text-align: justify;
+}
+
+.projeto a{
+    display: block;
+    text-align: center;
+    margin-top: 15px;
+    text-decoration: none;
+    color: white;
+    background-color: #244f6e;
+    padding: 10px 20px;
+    border-radius: 5px;
+    transition: 0.3s;
+
+}
+
+.projeto a:hover{
+    background-color: #081b29;
+
+
+}
