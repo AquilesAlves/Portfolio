@@ -25,11 +25,6 @@ body p{
     font-weight: 400;
 }
 
-#imagem{                                      /*  minha imagem    */
-    align-items: flex-end;
-    justify-content: left;
-    margin-left: 500px;
-}
 
 #cabecalho{                                 /*  mexe no footer  */
     position: fixed;
@@ -83,8 +78,16 @@ body p{
     background-position: center;
     display: flex;
     align-items: center;
+    justify-content: space-between;
     padding: 0 10%;
 }
+
+#imagem{                                      /*  minha imagem    */
+    display: flex;
+    align-items: flex-end;
+    justify-content: left;
+}
+
 
 #conteudo-principal{                        /* mexe na div dos textos   */
     max-width: 600px;
