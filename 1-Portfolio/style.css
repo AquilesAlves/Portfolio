@@ -98,6 +98,11 @@ body p{
 
 #desenho{
     height: 400px;
+    transition: 0.3s ease;
+}
+#desenho:hover{
+    transform: scale(1.05);
+
 }
 
 .conteudo-principal{                        /* mexe na div dos textos   */
