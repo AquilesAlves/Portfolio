@@ -12,7 +12,7 @@ html{
 }
 
 body{                                       /*  mexe em todo o body */
-    background: linear-gradient(225deg, #0f71a8 0%, #0d3555 55%, #081b29 100%);
+    background-color: #0d3555;
     color: white;
     background-size: cover;
 }
@@ -100,7 +100,7 @@ body p{
 
 }
 #desenho{
-    background-color: #00000042;
+    background-color: #00000021;
     box-shadow: 20px 20px 30px 4px rgba(0, 0, 0, 0.418);
     height: 450px;
     border-radius: 35px;
@@ -256,16 +256,18 @@ body p{
 }
 
 .projetos-h1{
-    padding: 10px;
-    margin-left: 196px;
+    padding: 2% 0% 0% 10%;
+    background-color: #0b2a44;
+
     
 }
 
 #projetos {
-    padding: 20px;
+    padding: 1.5% 0 4%;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    background-color: #0b2a44;
     
 }
 
@@ -273,7 +275,7 @@ body p{
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-    background-color: rgba(0, 0, 0, 0.13);
+    background-color: #00000021;
     margin: 10px;
     padding: 20px;
     border-radius: 20px;
