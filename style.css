@@ -32,7 +32,7 @@ body p{
     top: 0;
     left: 0;
     width: 100%;
-    padding: 20px 10%;
+    padding: 15px 10%;
     background: transparent;
     display: flex;
     justify-content: space-between;
@@ -48,7 +48,7 @@ body p{
 
 .logo {                                     /*  mexe no nome Aquiles    */
     position: relative;
-    font-size: 25px;
+    font-size: 30px;
     color: white;
     text-decoration: none;
     border-radius: 15px;
@@ -64,17 +64,34 @@ body p{
     height: 100%;
 }
 
-.barra a{                                   /*  mexe na barra de navegação superior */
+.barra .aqui{                                   /*  mexe na barra de navegação superior */
     font-size: 18px;
     color: white;
     text-decoration: none;
     padding: 10px;
     transition: 0.3s;
-    border-radius: 15px;    
+    border-radius: 15px;   
+    position: relative; 
 }
 
-.barra a:hover, #barra a#ativo {            /*  mexe na mudança de cor da barra */
+.barra .aqui::after{
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 2px;
+    width: 0;
+    height: 2px;
+    background-color: #00abf0; /* azul */
+    transition: width 0.3s ease-in-out;
+
+}
+
+.barra .aqui:hover{            /*  mexe na mudança de cor da barra */
     color: #00abf0;
+}
+
+.barra .aqui:hover::after {
+  width: 100%;
 }
 
 .principal{                                 /*  mexe em toda a section  */
@@ -91,6 +108,7 @@ body p{
     flex-wrap: wrap-reverse;
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.327);
     border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+
 }
 
 .desenho{                                      /*  minha imagem    */
@@ -98,12 +116,22 @@ body p{
     align-items: flex-end;
     justify-content: left;
     transition: transform 0.3s ease;
+    opacity: 0;
+    transform: translateX(20px);
+    animation: fadeInUp 1s ease-out forwards;
+    animation-delay: 0.5s;
 }
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+}}
 
 .desenho:hover{
     transform: scale(1.05);
-
 }
+
 #desenho{
     background-color: rgba(0, 0, 0, 0.129);
     box-shadow: 20px 20px 30px 4px rgba(0, 0, 0, 0.418);
@@ -124,6 +152,8 @@ body p{
 
 .conteudo-principal{                        /* mexe na div dos textos   */
     max-width: 600px;
+    
+
 
 }
 
@@ -291,6 +321,7 @@ body p{
     transition: 0.3s;
     will-change: transform;
 
+
 }
 
 .projeto:hover{
@@ -359,6 +390,7 @@ body p{
 
 footer{
     margin: 0;
+    gap: 4px;
     font-size: 16px;
     color: white;
     background-color: #0d3555;
