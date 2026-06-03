@@ -74,9 +74,9 @@ img {
 
 
 /* ================================
-   SEÇÃO INÍCIO
+   SEÇÃO principal
    ================================ */
-.inicio {
+.principal {
     min-height: 100vh;
     display: flex;
     align-items: center;
@@ -86,7 +86,7 @@ img {
     padding-top: 68px;
 }
 
-.inicio-texto {
+.conteudo-principal {
     display: flex;
     flex-direction: column;
     gap: 1.2rem;
@@ -104,18 +104,18 @@ img {
     width: fit-content;
 }
 
-.inicio-texto h1 {
+.principal-texto h1 {
     font-size: 3rem;
     font-weight: 800;
     line-height: 1.15;
 }
 
 /* Nome em azul */
-.inicio-texto h1 span {
+.principal-texto h1 span {
     color: #4fc3f7;
 }
 
-.inicio-texto h3 {
+.principal-texto h3 {
     font-family: 'DM Mono', monospace;
     font-size: 0.9rem;
     font-weight: 400;
@@ -192,7 +192,7 @@ img {
 /* ================================
    FOTO + REDES SOCIAIS
    ================================ */
-.inicio-foto {
+.principal-foto {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -380,14 +380,14 @@ img {
    ================================ */
 @media (max-width: 768px) {
 
-    .inicio {
+    .principal {
         flex-direction: column;
         text-align: center;
         padding-top: 100px;
         padding-bottom: 60px;
     }
 
-    .inicio-texto h1 {
+    .principal-texto h1 {
         font-size: 2.2rem;
     }
 
