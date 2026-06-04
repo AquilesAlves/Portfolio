@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
-* {
+* {                                         /*  mexe em todo o html */
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -10,12 +10,6 @@ html{
     scroll-behavior: smooth;
 }
 
-* {                                         /*  mexe em todo o html */
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
-}
 
 body{                                       /*  mexe em todo o body */
     font-family: 'Syne', sans-serif;
@@ -58,35 +52,25 @@ img {
     color: #4fc3f7;
 }
 
-.menu .aqui{                                   /*  mexe na barra de navegação superior */
-    font-size: 18px;
-    color: white;
-    text-decoration: none;
-    padding: 10px;
-    transition: 0.3s;
-    border-radius: 15px;   
-    position: relative; 
+.menu {
+    display: flex;
+    gap: 2rem;
 }
 
-.menu .aqui::after{
-    content: '';
-    position: absolute;
-    left: 0;
-    bottom: 2px;
-    width: 0;
-    height: 2px;
-    background-color: #00abf0; /* azul */
-    transition: width 0.3s ease-in-out;
-
+.menu a {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.8rem;
+    color: #8b949e;
+    transition: color 0.2s;
 }
 
-.menu .aqui:hover{            /*  mexe na mudança de cor da barra */
-    color: #00abf0;
+.menu a:hover {
+    color: #4fc3f7;
 }
 
-.menu .aqui:hover::after {
-  width: 100%;
-}
+/* ================================
+   SEÇÃO principal
+   ================================ */
 
 .principal{                                 /*  mexe em toda a section  */
     min-height: 100vh;
@@ -106,6 +90,7 @@ img {
     max-width: 540px;
 }
 
+/* Badge "Disponível" */
 .disponivel {
     font-family: 'DM Mono', monospace;
     font-size: 0.75rem;
@@ -157,6 +142,8 @@ img {
 }
 
 
+
+
 /* ================================
    BOTÕES
    ================================ */
@@ -200,10 +187,11 @@ img {
     color: #4fc3f7;
 }
 
-.desenho{                                      /*  minha imagem    */
+.desenho-redes{                                      /*  minha imagem    */
     display: flex;
-    align-items: flex-end;
-    justify-content: left;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
     transition: transform 0.3s ease;
     opacity: 0;
     transform: translateX(20px);
@@ -211,17 +199,13 @@ img {
     animation-delay: 0.5s;
 }
 
-@keyframes fadeInUp {
+@keyframes fadeInUp { /* desliza qnd carrega */
   to {
     opacity: 1;
     transform: translateY(0);
 }}
 
-.desenho:hover{
-    transform: scale(1.05);
-}
-
-#desenho{
+.desenho{
     background-color: rgba(0, 0, 0, 0.129);
     box-shadow: 20px 20px 30px 4px rgba(0, 0, 0, 0.418);
     height: 450px;
@@ -230,7 +214,7 @@ img {
     animation: flutuar 2.5s ease-in-out infinite;
 }
 
-@keyframes flutuar {
+@keyframes flutuar { /* imagem flutuando */
     0%, 100%{
         transform: translateY(15px);
     }
@@ -239,95 +223,7 @@ img {
     }
 }
 
-.conteudo-principal{                        /* mexe na div dos textos   */
-    max-width: 600px;
-    
 
-
-}
-
-.conteudo-principal h1{                     /*  mexe no h1  */
-    position: relative;
-    font-size: 52px;
-    line-height: 1.2;
-
-}
-
-.conteudo-principal h3{                     /*  mexe no h3   */
-    font-size: 32px;
-    color: #00abf0;
-}
-
-.conteudo-principal ul{                      /*  mexe na ul    */
-    font-size: 16px;
-    margin-left: 35px;
-    margin-bottom: 20px;
-
-    
-}
-
-.conteudo-principal .botoes{                /*  mexe nos botoes     */
-    display: flex;
-    justify-content: space-between;
-    width: 345px;
-    height: 55px;
-
-}
-
-.botoes a{                                  /*  mexe nas tags 'a' dos botoes    */
-    position: relative;
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-    width: 150px;
-    height: 100%;
-    background: #00abf0;
-    border: 2px solid #00abf0;
-    border-radius: 8px;
-    font-size: 19px;
-    color: #0d3555;
-    text-decoration: none;
-    letter-spacing: 1px;
-    z-index: 1;
-    overflow: hidden;
-    transition: 0.5s;
-    font-weight: 700;
-}
-
-.botoes a:hover{                            /*  mexe na mudança de cor dos botoes   */
-    color: #00abf0;
-}
-
-.botoes a:nth-child(2){                     /*  mexe no segundo botao   */
-    background: transparent;
-    color: #00abf0;
-    text-align: center;
-
-}
-
-.botoes a:nth-child(2):hover{               /*  mudança de cor do segundo botao */
-    color: #0d3555;
-}
-
-.botoes a:nth-child(2)::before{             /*  cor q o botao fica qnd coloca o mouse    */
-    background: #00abf0;
-}
-
-.botoes a::before{                          /*  como fica os botoes dps     */
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 0;
-    height: 100%;
-    background: #0d3555;
-    z-index: -1;
-    transition: 0.5s;
-}
-
-.botoes a:hover::before{
-    width: 100%;
-}
 
 .redes{
     position: absolute;
@@ -379,124 +275,183 @@ img {
 
 }
 
-.projetos-h1{
-    z-index: -5;
-    margin-top: 10px;
-    padding: 2% 0% 0% 10%;
-    background-color: #0b2a44;
+/* ================================
+   TÍTULOS DAS SEÇÕES
+   ================================ */
 
-    
+.projetos-titulo {
+    font-size: 2rem;
+    font-weight: 800;
+    text-align: center;
 }
 
-#projetos {
-    padding: 1.5% 0 4%;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    background-color: #0b2a44;
-    
+.projetos-subtitulo {
+    font-size: 0.95rem;
+    color: #8b949e;
+    text-align: center;
+    margin-top: 0.4rem;
+    margin-bottom: 2.5rem;
 }
 
-.projeto {
+
+/* ================================
+   SEÇÃO PROJETOS
+   ================================ */
+.projetos {
+    padding: 100px 8%;
+    border-top: 1px solid #30363d;
+}
+
+/* Grade responsiva — se ajusta sozinha ao adicionar cards */
+.grade-projetos {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.5rem;
+}
+
+
+/* ================================
+   CARD DE PROJETO
+   ================================ */
+.card {
+    background-color: #161b22;
+    border: 1px solid #30363d;
+    border-radius: 12px;
+    overflow: hidden;
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
-    background-color: #0d3555;
-    margin: 10px;
-    padding: 20px;
-    border-radius: 20px;
-    box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.212);
-    width: 300px;
-    transition: 0.3s;
-    will-change: transform;
-
-
+    transition: transform 0.2s, border-color 0.2s;
 }
 
-.projeto:hover{
-    transform: scale(1.02) translateY(-5px);
+.card:hover {
+    transform: translateY(-5px);
+    border-color: #4fc3f7;
 }
 
-.projeto img {
-    display: block;
-    margin: 0 auto 20px auto;
+.card-img {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
 }
 
-.mario {
-    border-radius: 5px;
-    width: 233px;
-}
-
-.login-page{
-    border-radius: 5px;
-    width: 250px;
-    padding: 1px;
-}
-
-.calculadora{
-    border-radius: 5px;
-    width: 240px;
-}
-
-.clima{
-    border-radius: 5px;
-    width: 265px;
-}
-
-.projeto h2{
-    margin-top: 10px;
-    color: #00abf0;
-}
-
-.projeto p{
-    margin-top: 10px;
-    font-size: 16px;
-    text-align: justify;
-}
-
-.small{
-    margin-bottom: 25px;
-}
-
-.projeto a{
-    display: block;
-    text-align: center;
-    margin-top: 15px;
-    text-decoration: none;
-    color: white;
-    background-color: #1c3f58;
-    padding: 10px 20px;
-    border-radius: 5px;
-    transition: 0.3s;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.35);
-}
-
-.projeto a:hover{
-    transform: scale(1.02);
-    background-color: #fff;
-    color: #000;
-}
-
-footer{
-    margin: 0;
-    gap: 4px;
-    font-size: 16px;
-    color: white;
-    background-color: #0d3555;
-    height: 50px;
+.card-corpo {
+    padding: 1.2rem;
     display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    flex: 1;
+}
+
+/* Tags dentro do card */
+.card-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+
+.card-tags span {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.62rem;
+    padding: 3px 10px;
+    border-radius: 4px;
+    border: 1px solid #4fc3f7;
+    color: #4fc3f7;
+    background-color: rgba(79, 195, 247, 0.07);
+}
+
+.card-corpo h3 {
+    font-size: 1.05rem;
+    font-weight: 700;
+}
+
+.card-corpo p {
+    font-size: 0.85rem;
+    color: #8b949e;
+    line-height: 1.5;
+    flex: 1;
+}
+
+/* Link "Ver projeto →" */
+.card-link {
+    display: inline-flex;
     align-items: center;
-    justify-content: center;
-    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.327);
-    border-top: 2px solid rgba(255, 255, 255, 0.1);
+    gap: 4px;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.75rem;
+    color: #4fc3f7;
+    margin-top: 0.5rem;
+    padding-top: 0.8rem;
+    border-top: 1px solid #30363d;
+    transition: gap 0.2s;
 }
 
-footer a{
-    text-decoration: none;
-    color: white;
-    transition: color 0.5s ease;
+.card-link:hover {
+    gap: 10px;
 }
 
-footer a:hover{
-    color: #00abf0;
+/* ================================
+   SEÇÃO CONTATO
+   ================================ */
+.contato {
+    padding: 100px 8%;
+    border-top: 1px solid #30363d;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+
+/* ================================
+   RODAPÉ
+   ================================ */
+.rodape {
+    padding: 2rem 8%;
+    border-top: 1px solid #30363d;
+    text-align: center;
+}
+
+.rodape p {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.72rem;
+    color: #8b949e;
+}
+
+/* ================================
+   CELULAR (tela menor que 768px)
+   ================================ */
+@media (max-width: 768px) {
+
+    .principal {
+        flex-direction: column;
+        text-align: center;
+        padding-top: 100px;
+        padding-bottom: 60px;
+    }
+
+    .principal-texto h1 {
+        font-size: 2.2rem;
+    }
+
+    .tags,
+    .botoes {
+        justify-content: center;
+    }
+
+    .disponivel {
+        align-self: center;
+    }
+
+    .foto {
+        width: 220px;
+    }
+
+    .menu {
+        gap: 1rem;
+    }
+
+    .menu a {
+        font-size: 0.7rem;
+    }
+
 }
