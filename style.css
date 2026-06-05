@@ -101,18 +101,18 @@ img {
     width: fit-content;
 }
 
-.principal-texto h1 {
+.conteudo-principal h1 {
     font-size: 3rem;
     font-weight: 800;
     line-height: 1.15;
 }
 
 /* Nome em azul */
-.principal-texto h1 span {
+.conteudo-principal h1 span {
     color: #4fc3f7;
 }
 
-.principal-texto h3 {
+.conteudo-principal h3 {
     font-family: 'DM Mono', monospace;
     font-size: 0.9rem;
     font-weight: 400;
@@ -225,50 +225,31 @@ img {
 
 
 
-.redes{
-    position: absolute;
-    bottom: 40px;
-    width: 170px;
+.redes {
     display: flex;
-    justify-content: space-between;
-
+    gap: 1rem;
 }
 
-.redes a{
-    position: relative;
-    display: inline-flex;
-    justify-content: center;
+.redes a {
+    width: 44px;
+    height: 44px;
+    border-radius: 8px;
+    border: 1px solid #30363d;
+    background-color: #161b22;
+    display: flex;
     align-items: center;
-    width: 40px;
-    height: 40px;
-    background: transparent;
-    border:  2px solid #00abf0;
-    border-radius: 50%;
-    font-size: 20px;
-    color: #00abf0;
-    text-decoration: none;
-    z-index: 1;
-    overflow: hidden;
-    transition: 0.5s;
-
+    justify-content: center;
+    font-size: 1.3rem;
+    color: #8b949e;
+    transition: color 0.2s, border-color 0.2s;
 }
 
-.redes a:hover{
-    color: #081b29;
+.redes a:hover {
+    color: #4fc3f7;
+    border-color: #4fc3f7;
 }
 
-.redes a::before{
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 0;
-    height: 100%;
-    background: #00abf0;
-    z-index: -1;
-    transition: 0.5s;
 
-}
 
 .redes a:hover::before{
     width: 100%;
@@ -279,13 +260,13 @@ img {
    TÍTULOS DAS SEÇÕES
    ================================ */
 
-.projetos-titulo {
+.titulo-secao {
     font-size: 2rem;
     font-weight: 800;
     text-align: center;
 }
 
-.projetos-subtitulo {
+.subtitulo-secao {
     font-size: 0.95rem;
     color: #8b949e;
     text-align: center;
@@ -429,7 +410,7 @@ img {
         padding-bottom: 60px;
     }
 
-    .principal-texto h1 {
+    .conteudo-principal h1 {
         font-size: 2.2rem;
     }
 
