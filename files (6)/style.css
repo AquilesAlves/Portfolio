@@ -1,0 +1,745 @@
+/* ================================
+   RESET
+   ================================ */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 72px; /* evita o cabeçalho cobrir o título ao clicar no menu */
+}
+
+body {
+    font-family: 'Syne', sans-serif;
+    background-color: #080c10;
+    color: #e8edf3;
+    line-height: 1.6;
+    overflow-x: hidden;
+    cursor: none; /* esconde o cursor padrão (o JS cria o cursor personalizado) */
+}
+
+a { text-decoration: none; color: inherit; }
+img { display: block; max-width: 100%; }
+
+/* Cor de seleção de texto */
+::selection {
+    background: #4fc3f7;
+    color: #080c10;
+}
+
+
+/* ================================
+   CURSOR PERSONALIZADO
+   O JS move esses dois elementos junto com o mouse
+   ================================ */
+#cursor {
+    position: fixed;
+    width: 8px;
+    height: 8px;
+    background: #4fc3f7;
+    border-radius: 50%;
+    pointer-events: none; /* não interfere nos cliques */
+    z-index: 9999;
+    transform: translate(-50%, -50%);
+}
+
+#cursor-follower {
+    position: fixed;
+    width: 36px;
+    height: 36px;
+    border: 1.5px solid #4fc3f7;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9998;
+    opacity: 0.5;
+    transform: translate(-50%, -50%);
+    /* transition suave pra seguir o cursor com atraso */
+    transition: width 0.2s ease, height 0.2s ease, opacity 0.2s ease;
+}
+
+
+/* ================================
+   GRADE DE LINHAS NO FUNDO
+   Dois gradientes sobrepostos formam a grade
+   ================================ */
+.bg-grid {
+    position: fixed;
+    inset: 0;           /* cobre a página toda */
+    z-index: 0;
+    pointer-events: none; /* não bloqueia cliques */
+    background-image:
+        linear-gradient(rgba(79, 195, 247, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(79, 195, 247, 0.03) 1px, transparent 1px);
+    background-size: 60px 60px;
+}
+
+
+/* ================================
+   SCROLLBAR PERSONALIZADA
+   ================================ */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: #080c10; }
+::-webkit-scrollbar-thumb { background: #4fc3f7; border-radius: 2px; }
+
+
+/* ================================
+   CABEÇALHO
+   ================================ */
+.cabecalho {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 8%;
+    height: 72px;
+    background-color: rgba(8, 12, 16, 0.88);
+    backdrop-filter: blur(16px); /* efeito de vidro fosco */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+/* Logo "<Aquiles/>" */
+.logo {
+    font-family: 'DM Mono', monospace;
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: #e8edf3;
+    transition: color 0.2s;
+}
+.logo:hover { color: #4fc3f7; }
+
+/* Os símbolos < /> ficam em azul */
+.logo-bracket { color: #4fc3f7; }
+
+.menu {
+    display: flex;
+    gap: 2.5rem;
+}
+
+.menu a {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.78rem;
+    color: #6b7a8d;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    position: relative;
+    padding-bottom: 3px;
+    transition: color 0.2s;
+}
+
+/* Linha que aparece embaixo do link no hover */
+.menu a::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0;
+    width: 0; height: 1px;
+    background: #4fc3f7;
+    transition: width 0.3s ease;
+}
+.menu a:hover { color: #4fc3f7; }
+.menu a:hover::after { width: 100%; }
+
+
+/* ================================
+   SEÇÃO PRINCIPAL
+   ================================ */
+.principal {
+    position: relative;
+    z-index: 1;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 3rem;
+    padding: 0 8%;
+    padding-top: 72px;
+}
+
+/* Badge "● Disponível para trabalho" */
+.disponivel {
+    position: absolute;
+    top: 100px; left: 8%;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.72rem;
+    color: #4fc3f7;
+    border: 1px solid rgba(79, 195, 247, 0.25);
+    background: rgba(79, 195, 247, 0.05);
+    padding: 6px 14px;
+    border-radius: 999px;
+    letter-spacing: 0.06em;
+}
+
+/* Ponto piscando dentro do badge */
+.dot {
+    width: 7px; height: 7px;
+    background: #4fc3f7;
+    border-radius: 50%;
+    animation: piscar 2s infinite; /* animação definida lá embaixo */
+}
+
+.conteudo-principal {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    max-width: 540px;
+}
+
+/* Título grande "Aquiles / Alves" */
+.conteudo-principal h1 {
+    font-size: clamp(3rem, 7vw, 6rem); /* clamp = mínimo, ideal, máximo */
+    font-weight: 800;
+    line-height: 0.95;
+    letter-spacing: -0.03em;
+}
+
+/* "Alves" fica só com contorno azul (sem preenchimento) */
+.conteudo-principal h1 span {
+    -webkit-text-stroke: 2px #4fc3f7;
+    color: transparent;
+}
+
+/* "Desenvolvedor de Softwares" */
+.conteudo-principal h2 {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.95rem;
+    font-weight: 400;
+    color: #6b7a8d;
+    letter-spacing: 0.04em;
+}
+
+.descricao {
+    color: #6b7a8d;
+    font-size: 1rem;
+    line-height: 1.7;
+}
+
+/* Tags de habilidades */
+.tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.tags span {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.72rem;
+    padding: 5px 14px;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    color: #6b7a8d;
+    background-color: #111820;
+    transition: border-color 0.2s, color 0.2s, transform 0.2s;
+}
+
+.tags span:hover {
+    border-color: #4fc3f7;
+    color: #4fc3f7;
+    transform: translateY(-2px);
+}
+
+
+/* ================================
+   BOTÕES
+   ================================ */
+.botoes {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.btn-cheio {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 13px 28px;
+    border-radius: 10px;
+    background-color: #4fc3f7;
+    color: #080c10;
+    font-weight: 700;
+    font-size: 0.85rem;
+    transition: opacity 0.2s, transform 0.2s, box-shadow 0.2s;
+}
+
+.btn-cheio:hover {
+    opacity: 0.88;
+    transform: translateY(-2px);
+    box-shadow: 0 0 28px rgba(79, 195, 247, 0.35);
+}
+
+.btn-vazio {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 13px 28px;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: #e8edf3;
+    font-size: 0.85rem;
+    transition: border-color 0.2s, color 0.2s, transform 0.2s;
+}
+
+.btn-vazio:hover {
+    border-color: #4fc3f7;
+    color: #4fc3f7;
+    transform: translateY(-2px);
+}
+
+
+/* ================================
+   FOTO + REDES SOCIAIS
+   ================================ */
+.desenho-redes {
+    position: relative; /* necessário para o .desenho-glow se posicionar aqui dentro */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    opacity: 0;
+    transform: translateX(20px);
+    animation: fadeInRight 1s ease-out forwards;
+    animation-delay: 0.3s;
+}
+
+/* Brilho azul que fica atrás da foto */
+.desenho-glow {
+    position: absolute;
+    width: 100%; height: 100%;
+    background: radial-gradient(circle, rgba(79, 195, 247, 0.12) 0%, transparent 70%);
+    filter: blur(30px);
+    animation: brilhar 3s ease-in-out infinite;
+}
+
+.desenho {
+    position: relative; /* fica na frente do glow */
+    height: 500px;
+    border-radius: 24px;
+    box-shadow: 20px 20px 40px rgba(0, 0, 0, 0.5);
+    animation: flutuar 2.5s ease-in-out infinite;
+    object-fit: cover;
+    object-position: top;
+}
+
+@keyframes flutuar {            /* imagem sobe e desce */
+    0%, 100% { transform: translateY(5px); }
+    50%       { transform: translateY(-25px); }
+}
+
+@keyframes brilhar {            /* brilho pulsa junto */
+    0%, 100% { opacity: 0.6; transform: scale(0.95); }
+    50%       { opacity: 1;   transform: scale(1.05); }
+}
+
+.redes {
+    position: relative; /* fica na frente do glow */
+    display: flex;
+    gap: 1rem;
+}
+
+.redes a {
+    width: 44px; height: 44px;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    background-color: #111820;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    color: #6b7a8d;
+    transition: color 0.2s, border-color 0.2s, transform 0.2s;
+}
+
+.redes a:hover {
+    color: #4fc3f7;
+    border-color: #4fc3f7;
+    transform: translateY(-3px);
+}
+
+
+/* ================================
+   INDICADOR DE SCROLL
+   Linha que desce e desaparece em loop
+   ================================ */
+.scroll-hint {
+    position: absolute;
+    bottom: 28px; left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #3d4f63;
+}
+
+.scroll-line {
+    width: 1px; height: 48px;
+    background: linear-gradient(to bottom, #4fc3f7, transparent);
+    animation: descerLinha 2s ease-in-out infinite;
+}
+
+@keyframes descerLinha {
+    0%   { transform: scaleY(0); transform-origin: top;    opacity: 0; }
+    50%  { transform: scaleY(1); transform-origin: top;    opacity: 1; }
+    100% { transform: scaleY(1); transform-origin: bottom; opacity: 0; }
+}
+
+
+/* ================================
+   LABEL DE SEÇÃO (// sobre mim)
+   ================================ */
+.label-secao {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.72rem;
+    color: #4fc3f7;
+    letter-spacing: 0.1em;
+    margin-bottom: 0.6rem;
+}
+
+/* ================================
+   TÍTULOS DAS SEÇÕES
+   ================================ */
+.titulo-secao {
+    font-size: 2rem;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+}
+
+.subtitulo-secao {
+    font-size: 0.95rem;
+    color: #6b7a8d;
+    margin-top: 0.4rem;
+    margin-bottom: 2.5rem;
+}
+
+
+/* ================================
+   SEÇÃO SOBRE
+   ================================ */
+.sobre {
+    position: relative;
+    z-index: 1;
+    padding: 110px 8%;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+/* Texto e stats lado a lado */
+.sobre-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: start;
+    margin-top: 2.5rem;
+}
+
+.sobre-texto {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.sobre-texto p {
+    color: #6b7a8d;
+    font-size: 1rem;
+    line-height: 1.75;
+}
+
+/* Grade 2x2 dos cards */
+.sobre-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
+.stat-card {
+    background-color: #111820;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 12px;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    position: relative;
+    overflow: hidden;
+    transition: border-color 0.2s, transform 0.2s;
+}
+
+/* Barrinha azul que sobe no hover */
+.stat-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 3px; height: 0;
+    background: #4fc3f7;
+    transition: height 0.3s ease;
+}
+
+.stat-card:hover {
+    border-color: rgba(79, 195, 247, 0.3);
+    transform: translateY(-4px);
+}
+
+.stat-card:hover::before { height: 100%; }
+
+.stat-card strong {         /* número grande */
+    font-size: 2.2rem;
+    font-weight: 800;
+    color: #4fc3f7;
+    line-height: 1;
+}
+
+.stat-card span {           /* texto abaixo do número */
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem;
+    color: #6b7a8d;
+}
+
+
+/* ================================
+   SEÇÃO PROJETOS
+   ================================ */
+.projetos {
+    position: relative;
+    z-index: 1;
+    padding: 110px 8%;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+/* Grade responsiva — se ajusta sozinha ao adicionar cards */
+.grade-projetos {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+}
+
+
+/* ================================
+   CARD DE PROJETO
+   ================================ */
+.card {
+    background-color: #111820;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 16px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-6px);
+    border-color: rgba(79, 195, 247, 0.3);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4), 0 0 25px rgba(79, 195, 247, 0.05);
+}
+
+/* Wrap da imagem — necessário para o overlay funcionar */
+.card-img-wrap {
+    position: relative;
+    overflow: hidden;
+    aspect-ratio: 16 / 9;
+}
+
+.card-img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    filter: brightness(0.85);
+    transition: transform 0.5s ease, filter 0.4s ease;
+}
+
+/* Zoom + escurece a imagem no hover */
+.card:hover .card-img {
+    transform: scale(1.06);
+    filter: brightness(0.55);
+}
+
+/* Overlay com botão "Ver projeto" que aparece no hover */
+.card-overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.card:hover .card-overlay { opacity: 1; }
+
+.overlay-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 10px 22px;
+    border-radius: 8px;
+    background: #4fc3f7;
+    color: #080c10;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.78rem;
+    font-weight: 600;
+    transform: translateY(10px);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover .overlay-btn {
+    transform: translateY(0);
+    box-shadow: 0 0 28px rgba(79, 195, 247, 0.4);
+}
+
+/* Corpo do card (texto) */
+.card-corpo {
+    padding: 1.2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    flex: 1;
+}
+
+.card-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+
+.card-tags span {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.62rem;
+    padding: 3px 10px;
+    border-radius: 4px;
+    border: 1px solid rgba(79, 195, 247, 0.2);
+    color: #4fc3f7;
+    background-color: rgba(79, 195, 247, 0.06);
+}
+
+.card-corpo h3 {
+    font-size: 1.05rem;
+    font-weight: 700;
+}
+
+.card-corpo p {
+    font-size: 0.85rem;
+    color: #6b7a8d;
+    line-height: 1.5;
+    flex: 1; /* empurra o link para baixo */
+}
+
+.card-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.75rem;
+    color: #4fc3f7;
+    margin-top: 0.5rem;
+    padding-top: 0.8rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+    transition: gap 0.2s;
+}
+
+.card-link:hover { gap: 10px; } /* seta se afasta no hover */
+
+#card4 { aspect-ratio: 16 / 12; } /* proporção diferente só pro card 4 */
+
+
+/* ================================
+   SEÇÃO CONTATO
+   ================================ */
+.contato {
+    position: relative;
+    z-index: 1;
+    padding: 110px 8%;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 1rem;
+}
+
+
+/* ================================
+   RODAPÉ
+   ================================ */
+.rodape {
+    position: relative;
+    z-index: 1;
+    padding: 2rem 8%;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.rodape p {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.72rem;
+    color: #3d4f63;
+    transition: color 0.3s;
+}
+
+.rodape:hover p { color: #6b7a8d; }
+
+
+/* ================================
+   ANIMAÇÕES GLOBAIS
+   ================================ */
+@keyframes fadeInRight {
+    from { opacity: 0; transform: translateX(30px); }
+    to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes piscar {             /* ponto do badge "Disponível" */
+    0%, 100% { box-shadow: 0 0 0 0 rgba(79, 195, 247, 0.5); }
+    50%       { box-shadow: 0 0 0 6px rgba(79, 195, 247, 0); }
+}
+
+
+/* ================================
+   CELULAR (menor que 768px)
+   ================================ */
+@media (max-width: 768px) {
+
+    .principal {
+        flex-direction: column;
+        text-align: center;
+        padding-top: 110px;
+        padding-bottom: 60px;
+    }
+
+    .disponivel {
+        position: static; /* volta ao fluxo normal */
+        align-self: center;
+        margin-bottom: -0.5rem;
+    }
+
+    .conteudo-principal h1 { font-size: 3rem; }
+
+    .tags, .botoes { justify-content: center; }
+
+    .scroll-hint { display: none; }
+
+    .sobre-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .menu { gap: 1rem; }
+    .menu a { font-size: 0.7rem; }
+
+    .rodape {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+}
