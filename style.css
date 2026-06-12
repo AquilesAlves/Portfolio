@@ -93,13 +93,26 @@ img {
 
 /* Badge "Disponível" */
 .disponivel {
+    position: absolute;
+    top: 100px; left: 8%;
+    display: flex;
+    align-items: center;
+    gap: 8px;
     font-family: 'DM Mono', monospace;
     font-size: 0.75rem;
     color: #4fc3f7;
-    border: 1px solid #4fc3f7;
-    padding: 5px 14px;
+    border: 1px solid rgba(79, 195, 247, 0.25);
+    padding: 6px 14px;
     border-radius: 999px;
     width: fit-content;
+}
+
+.ponto {
+    width: 7px; 
+    height: 7px;
+    background: #4fc3f7;
+    border-radius: 50%;
+    animation: piscar 2s infinite; /* animação definida lá embaixo */
 }
 
 .conteudo-principal h1 {
@@ -210,6 +223,11 @@ img {
     opacity: 1;
     transform: translateY(0);
 }}
+
+@keyframes piscar {             /* ponto do badge "Disponível" */
+    0%, 100% { box-shadow: 0 0 0 0 rgba(79, 195, 247, 0.5); }
+    50%       { box-shadow: 0 0 0 6px rgba(79, 195, 247, 0); }
+}
 
 .desenho{
     background-color: rgba(0, 0, 0, 0.129);

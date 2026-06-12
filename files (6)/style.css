@@ -172,7 +172,6 @@ img { display: block; max-width: 100%; }
     border: 1px solid rgba(79, 195, 247, 0.25);
     background: rgba(79, 195, 247, 0.05);
     padding: 6px 14px;
-    border-radius: 999px;
     letter-spacing: 0.06em;
 }
 
