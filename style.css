@@ -40,28 +40,36 @@ img {
     align-items: center;
     justify-content: space-between;
     padding: 0 8%;
-    height: 68px;
+    height: 72px;
     background-color: rgba(13, 17, 23, 0.92);
-    border-bottom: 1px solid #30363d;
+    backdrop-filter: blur(16px); /* efeito de vidro fosco */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06)
 }
 
 
 
 .logo {                                     /*  mexe no nome Aquiles    */
-    font-size: 1.3rem;
-    font-weight: 800;
+    font-family: 'DM Mono', monospace;
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: white;
+}
+
+.logoBarra{
     color: #4fc3f7;
 }
 
 .menu {
     display: flex;
-    gap: 2rem;
+    gap: 2.5rem;
 }
 
 .menu a {
     font-family: 'DM Mono', monospace;
-    font-size: 0.8rem;
-    color: #8b949e;
+    font-size: 0.78rem;
+    color: #6b7a8d;
+    letter-spacing: 0.06em;
+    position: relative;
     transition: color 0.2s;
 }
 
@@ -116,25 +124,28 @@ img {
 }
 
 .conteudo-principal h1 {
-    font-size: 3rem;
+    font-size: clamp(3rem, 7vw, 6rem); /* clamp = mínimo, ideal, máximo */
+    line-height: 0.95;
+    letter-spacing: -0.03em;
     font-weight: 800;
-    line-height: 1.15;
+    
 }
 
 /* Nome em azul */
 .conteudo-principal h1 span {
-    color: #4fc3f7;
+    -webkit-text-stroke: 2px #4fc3f7;
+    color: transparent;
 }
 
-.conteudo-principal h2 {
+.conteudo-principal h2 {  
     font-family: 'DM Mono', monospace;
     font-size: 1.2rem;
     font-weight: 400;
-    color: #8b949e;
+    color: #6b7a8d;
 }
 
 .descricao {
-    color: #8b949e;
+    color: #6b7a8d;
     font-size: 1rem;
 }
 
@@ -149,10 +160,19 @@ img {
     font-family: 'DM Mono', monospace;
     font-size: 0.72rem;
     padding: 5px 14px;
-    border-radius: 6px;
-    border: 1px solid #30363d;
-    color: #8b949e;
-    background-color: #161b22;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    color: #6b7a8d;
+    background-color: #111820;
+    transition: border-color 0.2s, color 0.2s, transform 0.2s;
+
+    font-family: 'DM Mono', monospace;
+    font-size: 0.72rem;
+    padding: 5px 14px;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    color: #6b7a8d;
+    background-color: #111820;
     transition: transform 0.2s, border-color 0.2s;
 
 }
@@ -176,34 +196,38 @@ img {
     display: inline-flex;
     align-items: center;
     gap: 6px;
-    padding: 12px 26px;
-    border-radius: 8px;
+    padding: 13px 28px;
+    border-radius: 10px;
     background-color: #4fc3f7;
-    color: #0d1117;
+    color: #080c10;
     font-weight: 700;
     font-size: 0.85rem;
-    transition: opacity 0.2s;
+    transition: opacity 0.2s, transform 0.2s, box-shadow 0.2s;
 }
 
 .btn-cheio:hover {
-    opacity: 0.85;
+    opacity: 0.88;
+    transform: translateY(-2px);
+    box-shadow: 0 0 28px rgba(79, 195, 247, 0.35);
 }
 
 .btn-vazio {
     display: inline-flex;
     align-items: center;
     gap: 6px;
-    padding: 12px 26px;
-    border-radius: 8px;
-    border: 1px solid #30363d;
-    color: #e6edf3;
+    padding: 13px 28px;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: #e8edf3;
     font-size: 0.85rem;
-    transition: border-color 0.2s, color 0.2s;
+    transition: border-color 0.2s, color 0.2s, transform 0.2s;
 }
 
 .btn-vazio:hover {
     border-color: #4fc3f7;
     color: #4fc3f7;
+    transform: translateY(-2px);
+    box-shadow: 0 0 28px rgba(79, 194, 247, 0.164);
 }
 
 .desenho-redes{                                      /*  minha imagem    */
@@ -232,7 +256,7 @@ img {
 .desenho{
     background-color: rgba(0, 0, 0, 0.129);
     box-shadow: 20px 20px 30px 4px rgba(0, 0, 0, 0.418);
-    height: 550px;
+    height: 480px;
     border-radius: 35px;
     animation: flutuar 2.5s ease-in-out infinite;
 }
@@ -270,6 +294,38 @@ img {
 .redes a:hover {
     color: #4fc3f7;
     border-color: #4fc3f7;
+}
+
+
+/* ================================
+   INDICADOR DE SCROLL
+   Linha que desce e desaparece em loop
+   ================================ */
+.scroll-dica {
+    position: absolute;
+    bottom: 28px; left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.12em;
+    color: #3d4f63;
+}
+
+.scroll-linha {
+    width: 1px; height: 48px;
+    background: linear-gradient(to top, #4fc3f7, transparent);
+    animation: descerLinha 2s ease-in-out infinite;
+
+}
+
+@keyframes descerLinha {
+    0%   { transform: scaleY(0); transform-origin: top;    opacity: 0; }
+    50%  { transform: scaleY(1); transform-origin: top;    opacity: 1; }
+    100% { transform: scaleY(1); transform-origin: bottom; opacity: 0; }
 }
 
 /* ================================
