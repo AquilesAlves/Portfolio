@@ -137,6 +137,11 @@ img {
     color: transparent;
 }
 
+.webkit{
+    -webkit-text-stroke: 2px #4fc3f7;
+    color: transparent;
+}
+
 .conteudo-principal h2 {  
     font-family: 'DM Mono', monospace;
     font-size: 1.2rem;
@@ -328,6 +333,19 @@ img {
     100% { transform: scaleY(1); transform-origin: bottom; opacity: 0; }
 }
 
+
+
+/* ================================
+   LABEL DE SEÇÃO (// sobre mim)
+   ================================ */
+.label-secao {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.72rem;
+    color: #4fc3f7;
+    letter-spacing: 0.1em;
+    margin-bottom: 0.6rem;
+}
+
 /* ================================
    TÍTULOS DAS SEÇÕES
    ================================ */
@@ -335,15 +353,99 @@ img {
 .titulo-secao {
     font-size: 2rem;
     font-weight: 800;
-    text-align: center;
+    letter-spacing: -0.02em;
+
 }
 
 .subtitulo-secao {
     font-size: 0.95rem;
     color: #8b949e;
-    text-align: center;
     margin-top: 0.4rem;
     margin-bottom: 2.5rem;
+}
+
+
+
+
+/* ================================
+   SEÇÃO SOBRE
+   ================================ */
+.sobre {
+    position: relative;
+    z-index: 1;
+    padding: 110px 8%;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+/* Texto e stats lado a lado */
+.sobre-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: start;
+    margin-top: 2.5rem;
+}
+
+.sobre-texto {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.sobre-texto p {
+    color: #6b7a8d;
+    font-size: 1rem;
+    line-height: 1.75;
+}
+
+/* Grade 2x2 dos cards */
+.sobre-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
+.stat-card {
+    background-color: #111820;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 12px;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    position: relative;
+    overflow: hidden;
+    transition: border-color 0.2s, transform 0.2s;
+}
+
+/* Barrinha azul que sobe no hover */
+.stat-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 3px; height: 0;
+    background: #4fc3f7;
+    transition: height 0.3s ease;
+}
+
+.stat-card:hover {
+    border-color: rgba(79, 195, 247, 0.3);
+    transform: translateY(-4px);
+}
+
+.stat-card:hover::before { height: 100%; }
+
+.stat-card strong {         /* número grande */
+    font-size: 2.2rem;
+    font-weight: 800;
+    color: #4fc3f7;
+    line-height: 1;
+}
+
+.stat-card span {           /* texto abaixo do número */
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem;
+    color: #6b7a8d;
 }
 
 
@@ -351,9 +453,10 @@ img {
    SEÇÃO PROJETOS
    ================================ */
 .projetos {
-    padding: 100px 8%;
-    border-top: 1px solid #30363d;
-
+    position: relative;
+    z-index: 1;
+    padding: 110px 8%;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
 }
 
 /* Grade responsiva — se ajusta sozinha ao adicionar cards */
@@ -367,19 +470,20 @@ img {
 /* ================================
    CARD DE PROJETO
    ================================ */
-.card {
+.card {    
     background-color: #161b22;
-    border: 1px solid #30363d;
-    border-radius: 12px;
+    border: 1px solid #ffffff0f;
+    border-radius: 16px;
     overflow: hidden;
     display: flex;
     flex-direction: column;
-    transition: transform 0.2s, border-color 0.2s;
+    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .card:hover {
-    transform: translateY(-5px);
-    border-color: #4fc3f7;
+    transform: translateY(-6px);
+    border-color: rgba(79, 195, 247, 0.3);
+    box-shadow: 0 20px 50px #00000066, 0 0 25px #4fc3f70d;
 }
 
 .card-img {
