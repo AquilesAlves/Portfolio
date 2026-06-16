@@ -164,15 +164,6 @@ img {
     border: 1px solid rgba(255, 255, 255, 0.07);
     color: #6b7a8d;
     background-color: #111820;
-    transition: border-color 0.2s, color 0.2s, transform 0.2s;
-
-    font-family: 'DM Mono', monospace;
-    font-size: 0.72rem;
-    padding: 5px 14px;
-    border-radius: 999px;
-    border: 1px solid rgba(255, 255, 255, 0.07);
-    color: #6b7a8d;
-    background-color: #111820;
     transition: transform 0.2s, border-color 0.2s;
 
 }
@@ -190,6 +181,14 @@ img {
     display: flex;
     gap: 1rem;
     flex-wrap: wrap;
+}
+
+.botoes a i{
+    margin-left: -5%;
+    font-size: 18px;
+}
+.botoes .whats{
+    font-size: 20px;
 }
 
 .btn-cheio {
@@ -341,6 +340,10 @@ img {
     margin-bottom: 0.6rem;
 }
 
+.label-secao span{
+    color: #8b949e;
+}
+
 /* ================================
    TÍTULOS DAS SEÇÕES
    ================================ */
@@ -364,8 +367,6 @@ img {
     margin-top: 0.4rem;
     margin-bottom: 2.5rem;
 }
-
-
 
 
 /* ================================
@@ -644,6 +645,7 @@ img {
     }
 
     .disponivel {
+        position: static; /* volta ao fluxo normal no celular */
         align-self: center;
     }
 
