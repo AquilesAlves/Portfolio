@@ -43,7 +43,7 @@ img {
     height: 72px;
     background-color: rgba(13, 17, 23, 0.92);
     backdrop-filter: blur(16px); /* efeito de vidro fosco */
-    border-bottom: 1px solid rgba(255, 255, 255, 0.06)
+    border-bottom: 1px solid #ffffff0f
 }
 
 
@@ -133,11 +133,6 @@ img {
 
 /* Nome em azul */
 .conteudo-principal h1 span {
-    -webkit-text-stroke: 2px #4fc3f7;
-    color: transparent;
-}
-
-.webkit{
     -webkit-text-stroke: 2px #4fc3f7;
     color: transparent;
 }
@@ -286,7 +281,7 @@ img {
     width: 44px;
     height: 44px;
     border-radius: 8px;
-    border: 1px solid #30363d;
+    border: 1px solid #ffffff0f;
     background-color: #161b22;
     display: flex;
     align-items: center;
@@ -351,10 +346,16 @@ img {
    ================================ */
 
 .titulo-secao {
-    font-size: 2rem;
+    font-size: 3rem;
     font-weight: 800;
     letter-spacing: -0.02em;
 
+}
+
+.titulo-secao em{
+    font-style: normal;
+    -webkit-text-stroke: 1.5px #4fc3f7;
+    color: transparent;
 }
 
 .subtitulo-secao {
@@ -516,9 +517,9 @@ img {
     font-size: 0.62rem;
     padding: 3px 10px;
     border-radius: 4px;
-    border: 1px solid #4fc3f7;
+    border: 1px solid #4fc3f733;
     color: #4fc3f7;
-    background-color: rgba(79, 195, 247, 0.07);
+    background-color: #4fc3f712;
 }
 
 .card-corpo h3 {
@@ -543,7 +544,7 @@ img {
     color: #4fc3f7;
     margin-top: 0.5rem;
     padding-top: 0.8rem;
-    border-top: 1px solid #30363d;
+    border-top: 1px solid #ffffff0f;
     transition: gap 0.2s;
 }
 
@@ -556,7 +557,7 @@ img {
    ================================ */
 .contato {
     padding: 100px 8%;
-    border-top: 1px solid #30363d;
+    border-top: 1px solid #ffffff0f;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -568,20 +569,57 @@ img {
    RODAPÉ
    ================================ */
 .rodape {
-    padding: 2rem 8%;
-    border-top: 1px solid #30363d;
+    z-index: 1;
+    position: relative;
+    padding: 2rem 5%;
+    border-top: 1px solid #ffffff0f;
     text-align: center;
 }
+
+.rodapeInner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.logoFooter { font-size: 1rem; }
+
 
 .rodape p {
     font-family: 'DM Mono', monospace;
     font-size: 0.72rem;
-    color: #8b949e;
-    transition: 0.4s ease
+    color: #3d4f63;
+
 }
 
-.rodape:hover p{
-    color: white;
+.rodape a{
+    transition: 0.5s ease;
+}
+
+.rodape p a{
+    color: #8b949e;
+    transition: 0.5s ease;
+}
+
+.rodape a:hover{
+    color: #4fc3f7;
+}
+
+.rodapeRedes{
+    display: flex;
+    gap: 1rem;
+}
+
+.rodapeRedes a {
+    font-size: 1.2rem;
+    color: #3d4f63;
+    transition: 0.5s ease;
+
+    
 }
 
 /* ================================

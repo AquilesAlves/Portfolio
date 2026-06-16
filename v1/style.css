@@ -815,7 +815,7 @@ body:hover .cursor { opacity: 1; }
     border-top: 1px solid var(--border);
     padding: 2rem 5%;
 }
-.rodape-inner {
+.rodapeInner {
     max-width: 1200px;
     margin: 0 auto;
     display: flex;
@@ -824,6 +824,7 @@ body:hover .cursor { opacity: 1; }
     flex-wrap: wrap;
     gap: 1rem;
 }
+
 .logo-footer { font-size: 1rem; }
 
 .rodape p {
